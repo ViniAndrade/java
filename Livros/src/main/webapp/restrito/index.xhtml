@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Unipe</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+</h:head>
+
+<h:body>
+	<h:form id="formLivros">
+		<div class="main main-raised">
+			<div class="section">
+			<div class="container">
+				<h1> Listagem de Livros </h1>
+				
+				<h:commandButton value="Cadastrar" 
+				styleClass="btn btn-success" action="#{livroBeans.preparaCadastrar}"/>
+				
+				<p:commandButton value="Sair" 
+				styleClass="btn btn-danger" action="#{loginBeans.logout}"/>
+				
+				<p:dataTable var="livro" value="#{livroBeans.livros}"
+				 styleClass="table">
+				    <p:column headerText="Id">
+				        <h:outputText value="#{livro.id}" />
+				    </p:column>
+				 
+				    <p:column headerText="Nome">
+				        <h:outputText value="#{livro.nome}" />
+				    </p:column>
+				 
+				    <p:column headerText="Ano">
+				        <h:outputText value="#{livro.ano}" />
+				    </p:column>
+				    
+				    <p:column headerText="Autor">
+				        <h:outputText value="#{livro.autor}" />
+				    </p:column>
+				 
+				    <p:column headerText="Ação">
+						<p:commandLink
+							action="#{livroBeans.preparaVisualizacao(livro.id)}"
+							title="Visualizar" styleClass="btn btn-sm btn-primary">
+								<i class="glyphicon glyphicon-search"></i>
+						</p:commandLink>	
+						<p:commandLink
+							action="#{livroBeans.preparaEdicao(livro.id)}"
+							title="Editar" styleClass="btn btn-sm btn-info">
+								<i class="glyphicon glyphicon-pencil"></i>
+						</p:commandLink>
+						<p:commandLink
+							action="#{livroBeans.excluir(livro.id)}"
+							title="Excluir" styleClass="btn btn-sm btn-danger">
+								<i class="glyphicon glyphicon-trash"></i>
+						</p:commandLink>
+				    </p:column>
+				</p:dataTable>
+			</div>
+			</div>
+		</div>
+	</h:form>
+</h:body>
+
+</html>

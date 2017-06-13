@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Unipe</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+</h:head>
+
+<h:body>
+	
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<h:form id="formLogin">
+	<div class="container">
+				<div class="row" style="margin-top:100px;">
+					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+						<div id="cardLogin" class="card card-signup">
+								<div class="header header-primary text-center">
+									<h2>Entrar</h2>
+								</div>
+						<div class="content">
+							<p:messages id="messages" showIcon="false" showDetail="true" 
+								autoUpdate="true" closable="true" />
+							<div class="input-group">
+								<span class="input-group-addon"> <i
+									class="glyphicon glyphicon-user"></i>
+								</span>
+								<div class="form-group is-empty">
+									<p:inputText styleClass="form-control" placeholder="Login"
+										value="#{loginBeans.login}">
+										<span class="material-input"></span>
+									</p:inputText>
+									<!-- <input type="text" class="form-control" placeholder="Login"> -->
+									<!-- <span class="material-input"></span> -->
+									<!-- </input> -->
+								</div>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"> <i
+									class="glyphicon glyphicon-lock"></i>
+								</span>
+								<div class="form-group is-empty">
+									<p:password styleClass="form-control" placeholder="Senha"
+										value="#{loginBeans.senha}">
+										<span class="material-input"></span>
+									</p:password>
+									<!-- <input type="password" placeholder="Senha" class="form-control"> -->
+									<!-- <span class="material-input"></span> -->
+									<!-- </input> -->
+								</div>
+							</div>
+						</div>
+						<div class="footer text-center">
+							<p:commandButton value="Realizar Login"
+								onstart="return exibirLoad(); return;"
+								oncomplete="return ocultarLoad(); return;"
+								styleClass="btn btn-simple btn-primary"
+								style="margin-top:15px;"
+								action="#{loginBeans.autenticar}" />
+
+							<a href="#pablo" class=""></a>
+						</div>
+					</div>
+
+						<div id="cardLoad" class="card card-signup" style="display:none;">
+								<div class="header header-primary text-center">
+									<h2>Entrar</h2>
+								</div>
+						<div class="content">
+							<h:graphicImage library="img" name="load.gif" 
+							styleClass="center-block"/>
+						</div>
+						
+					</div>
+				</div>
+				</div>
+			</div>
+	<script>
+		function exibirLoad(){
+			$('#cardLogin').css('display','none');
+			$('#cardLoad').css('display','inline-block');
+			
+			return true;
+		}
+		function ocultarLoad(){
+			$('#cardLogin').css('display','inline-block');
+			$('#cardLoad').css('display','none');
+			
+			return false;
+		}
+	</script>
+	</h:form>
+</h:body>
+
+</html>

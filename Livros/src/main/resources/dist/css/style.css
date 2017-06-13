@@ -1,0 +1,7 @@
+@CHARSET "ISO-8859-1";
+.regCommandButton { 
+    color: #ffffff;
+    background: #29b6a0;
+    border-color: #23a38f;
+    font-family: 'pluto_sansthin'; 
+}
